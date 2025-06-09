@@ -1,18 +1,229 @@
-/**
-  |============================
-  | include css partials with
-  | default @import url()
-  |============================
-*/
-/* Common styles */
-@import url('./reset.css');
-@import url('./base.css');
-@import url('./container.css');
-@import url('./animations.css');
+/* Styles.css */
 
-/* Sections style */
-@import url('./header.css');
-@import url('./vite-promo.css');
-@import url('./badges.css');
-@import url('./back-link.css');
-@import url('./footer.css');
+body {
+  font-family: sans-serif;
+  background: #f0f0f0;
+  margin: 0;
+}
+
+.feedback-container {
+  width: 1440px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding-top: 112px;
+  padding-right: 64px;
+  padding-bottom: 112px;
+  padding-left: 64px;
+  background-color: #060307;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.feedback-section {
+  width: 100%;
+  min-height: 397.89px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  /* Gap 16px для елементів всередині feedback-section,
+     це вплине на відступ між swiper-container та pagination */
+  gap: 16px;
+  /* */
+}
+
+.swiper-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  flex-grow: 1;
+  min-height: 250px;
+}
+
+.swiper-slide {
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  min-height: 200px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* ТЕКСТ ВІДГУКУ - ЗМІНА ТУТ */
+.swiper-slide .text {
+  font-size: 24px;
+  line-height: 1.5;
+  /* ЗМІНА: відступ від тексту до автора 32px */
+  margin-top: 20px;
+  /* Залишаємо від зірочок */
+  margin-bottom: 32px;
+  /* Новий відступ вниз до автора */
+  font-style: normal;
+  color: #fff;
+  max-width: 80%;
+}
+
+/* ІМ'Я КОРИСТУВАЧА - ЗМІНА ТУТ */
+.swiper-slide .user {
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 0;
+  /* Видаляємо, оскільки відступ керується margin-bottom тексту */
+  /* ЗМІНА: від автора до краю контейнера 59px */
+  /* margin-bottom: 0px; */
+  /* Новий відступ вниз від автора */
+  color: #fff;
+}
+.rating {
+  margin-bottom: 20px;
+  margin-top: 0;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.rating .star,
+.rating .star-empty {
+  font-size: 20px;
+  /* Розмір зірочки 20px */
+  /* Переконайтеся, що ви використовуєте іконки Font Awesome:
+     <i class="fas fa-star star"></i> для заповненої
+     <i class="far fa-star star-empty"></i> для порожньої
+  */
+}
+
+.rating .star {
+  color: #764191;
+  /* Фіолетовий колір для заповненої зірки */
+}
+
+.rating .star-empty {
+  color: #ffffff;
+  /* Білий колір для контуру незаповненої зірки */
+  opacity: 1;
+  /* Повна непрозорість контуру */
+}
+
+.swiper-buttons {
+  position: absolute;
+  top: 50px;
+  /* Це значення потрібно буде налаштувати емпірично */
+  width: 100%;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.swiper-buttons button {
+  background-color: #060307;
+  color: #fff;
+  border-radius: 8px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s;
+  pointer-events: auto;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.swiper-buttons button:first-child {
+  margin-left: -60px;
+}
+
+.swiper-buttons button:last-child {
+  margin-right: -60px;
+}
+
+.swiper-buttons button:hover {
+  background: rgba(6, 3, 7, 0.8);
+  border-color: #fff;
+}
+
+/* ПАГІНАЦІЯ - ЗМІНИ ТУТ */
+.pagination {
+  gap: 10px;
+  /* Відступ 16px від swiper-wrapper/swiper-container вже керується gap: 16px на feedback-section */
+  margin-top: 0;
+  /* Встановлюємо в 0, оскільки gap на батьківському елементі вже враховує відступ */
+  /* ЗМІНА: від спану pag до країв контейнера де вони розміщені 10 px */
+  padding: 10px;
+  /* Додаємо внутрішній відступ до контейнера пагінації */
+  display: flex;
+  justify-content: center;
+}
+
+.pagination span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  display: inline-block;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.pagination .active {
+  background: #fff;
+}
+
+
+/* НОВІ СТИЛІ ДЛЯ ЛОАДЕРА */
+
+.loading-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  /* Переконайтеся, що фон прозорий, як і для інших слайдів */
+  color: #fff;
+  /* Колір тексту, якщо там щось залишиться */
+}
+
+.loader-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  /* Займає всю доступну висоту swiper-slide */
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #FFF;
+  /* Білий колір обведення */
+  border-bottom-color: transparent;
+  /* Низ прозорий */
+  border-radius: 50%;
+  /* Кругла форма */
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  /* Анімація обертання */
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
