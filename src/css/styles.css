@@ -1,5 +1,11 @@
 /* Styles.css */
 
+/*
+* ----------------------------------------------------
+* БАЗОВІ СТИЛІ (Mobile First - від 320px)
+* ----------------------------------------------------
+*/
+
 body {
   font-family: sans-serif;
   background: #f0f0f0;
@@ -7,13 +13,12 @@ body {
 }
 
 .feedback-container {
-  width: 1440px;
-  max-width: 100%;
+  width: 100%;
   margin: 0 auto;
-  padding-top: 112px;
-  padding-right: 64px;
-  padding-bottom: 112px;
-  padding-left: 64px;
+  padding-top: 60px;
+  padding-right: 20px;
+  padding-bottom: 60px;
+  padding-left: 20px;
   background-color: #060307;
   display: flex;
   justify-content: center;
@@ -23,15 +28,12 @@ body {
 
 .feedback-section {
   width: 100%;
-  min-height: 397.89px;
+  min-height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  /* Gap 16px для елементів всередині feedback-section,
-     це вплине на відступ між swiper-container та pagination */
-  gap: 16px;
-  /* */
+  gap: 10px;
 }
 
 .swiper-container {
@@ -39,7 +41,7 @@ body {
   overflow: hidden;
   position: relative;
   flex-grow: 1;
-  min-height: 250px;
+  min-height: 200px;
 }
 
 .swiper-slide {
@@ -47,7 +49,7 @@ body {
   border-radius: 0;
   padding: 0;
   box-shadow: none;
-  min-height: 200px;
+  min-height: 180px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -57,67 +59,56 @@ body {
   box-sizing: border-box;
 }
 
-/* ТЕКСТ ВІДГУКУ - ЗМІНА ТУТ */
+/* ТЕКСТ ВІДГУКУ */
 .swiper-slide .text {
-  font-size: 24px;
-  line-height: 1.5;
-  /* ЗМІНА: відступ від тексту до автора 32px */
-  margin-top: 20px;
-  /* Залишаємо від зірочок */
-  margin-bottom: 32px;
-  /* Новий відступ вниз до автора */
+  font-size: 18px;
+  line-height: 1.4;
+  margin-top: 15px;
+  margin-bottom: 20px;
   font-style: normal;
   color: #fff;
-  max-width: 80%;
+  max-width: 90%;
+  /* Зберігаємо 90% для мобільних (кнопки приховані) */
 }
 
-/* ІМ'Я КОРИСТУВАЧА - ЗМІНА ТУТ */
+/* ІМ'Я */
 .swiper-slide .user {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 16px;
   margin-top: 0;
-  /* Видаляємо, оскільки відступ керується margin-bottom тексту */
-  /* ЗМІНА: від автора до краю контейнера 59px */
-  /* margin-bottom: 0px; */
-  /* Новий відступ вниз від автора */
   color: #fff;
 }
+
 .rating {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   margin-top: 0;
   display: flex;
   justify-content: center;
-  gap: 5px;
+  gap: 3px;
 }
 
 .rating .star,
 .rating .star-empty {
-  font-size: 20px;
-  /* Розмір зірочки 20px */
-  /* Переконайтеся, що ви використовуєте іконки Font Awesome:
-     <i class="fas fa-star star"></i> для заповненої
-     <i class="far fa-star star-empty"></i> для порожньої
-  */
+  font-size: 18px;
 }
 
-.rating .star {
+.star {
   color: #764191;
-  /* Фіолетовий колір для заповненої зірки */
 }
 
-.rating .star-empty {
+.star-empty {
   color: #ffffff;
-  /* Білий колір для контуру незаповненої зірки */
-  opacity: 1;
-  /* Повна непрозорість контуру */
 }
 
 .swiper-buttons {
   position: absolute;
-  top: 50px;
-  /* Це значення потрібно буде налаштувати емпірично */
+  top: 48px;
+  /* Вирівнювання за верхнім краєм тексту для мобільних */
   width: 100%;
-  padding: 0;
+  left: 0;
+  right: 0;
+  padding: 0 16px;
+  /* Менші відступи для кнопок на мобільних (хоча приховані) */
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
@@ -125,28 +116,28 @@ body {
   z-index: 20;
 }
 
+/* ПРИХОВУЄМО КНОПКИ ЗА ЗАМОВЧУВАННЯМ (ДЛЯ МОБІЛЬНИХ) */
 .swiper-buttons button {
+  display: none;
+  /* Приховуємо кнопки на мобільних екранах */
   background-color: #060307;
   color: #fff;
   border-radius: 8px;
-  width: 48px;
-  height: 48px;
-  display: flex;
+  width: 40px;
+  height: 40px;
   justify-content: center;
   align-items: center;
-  font-size: 24px;
+  font-size: 20px;
   cursor: pointer;
   transition: background 0.3s, border-color 0.3s;
   pointer-events: auto;
   border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-.swiper-buttons button:first-child {
-  margin-left: -60px;
-}
-
-.swiper-buttons button:last-child {
-  margin-right: -60px;
+.swiper-buttons button img {
+  width: 16px;
+  height: 16px;
+  display: block;
 }
 
 .swiper-buttons button:hover {
@@ -154,22 +145,18 @@ body {
   border-color: #fff;
 }
 
-/* ПАГІНАЦІЯ - ЗМІНИ ТУТ */
+/* ПАГІНАЦІЯ */
 .pagination {
-  gap: 10px;
-  /* Відступ 16px від swiper-wrapper/swiper-container вже керується gap: 16px на feedback-section */
+  gap: 8px;
   margin-top: 0;
-  /* Встановлюємо в 0, оскільки gap на батьківському елементі вже враховує відступ */
-  /* ЗМІНА: від спану pag до країв контейнера де вони розміщені 10 px */
   padding: 10px;
-  /* Додаємо внутрішній відступ до контейнера пагінації */
   display: flex;
   justify-content: center;
 }
 
 .pagination span {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.4);
   display: inline-block;
@@ -181,17 +168,13 @@ body {
   background: #fff;
 }
 
-
-/* НОВІ СТИЛІ ДЛЯ ЛОАДЕРА */
-
+/* ЛОАДЕР */
 .loading-slide {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: transparent;
-  /* Переконайтеся, що фон прозорий, як і для інших слайдів */
   color: #fff;
-  /* Колір тексту, якщо там щось залишиться */
 }
 
 .loader-wrapper {
@@ -200,22 +183,17 @@ body {
   align-items: center;
   width: 100%;
   height: 100%;
-  /* Займає всю доступну висоту swiper-slide */
 }
 
 .loader {
-  width: 48px;
-  height: 48px;
-  border: 5px solid #FFF;
-  /* Білий колір обведення */
+  width: 40px;
+  height: 40px;
+  border: 4px solid #FFF;
   border-bottom-color: transparent;
-  /* Низ прозорий */
   border-radius: 50%;
-  /* Кругла форма */
   display: inline-block;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
-  /* Анімація обертання */
 }
 
 @keyframes rotation {
@@ -225,5 +203,174 @@ body {
 
   100% {
     transform: rotate(360deg);
+  }
+}
+
+/*
+* ----------------------------------------------------
+* СТИЛІ ДЛЯ ПЛАНШЕТІВ (min-width: 768px)
+* ----------------------------------------------------
+*/
+@media screen and (min-width: 768px) {
+  .feedback-container {
+    padding-top: 80px;
+    padding-right: 32px;
+    padding-bottom: 80px;
+    padding-left: 32px;
+  }
+
+  .feedback-section {
+    gap: 16px;
+    min-height: 300px;
+  }
+
+  .swiper-container {
+    min-height: 220px;
+  }
+
+  .swiper-slide {
+    min-height: 200px;
+  }
+
+  .swiper-slide .text {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 24px;
+    max-width: 440px;
+    /* АДАПТИВНА ШИРИНА ТЕКСТУ ДЛЯ ПЛАНШЕТІВ (для відступу 44px) */
+  }
+
+  .swiper-slide .user {
+    font-size: 17px;
+  }
+
+  .rating {
+    margin-bottom: 20px;
+    gap: 4px;
+  }
+
+  .rating .star,
+  .rating .star-empty {
+    font-size: 19px;
+  }
+
+  .swiper-buttons {
+    top: 59px;
+    /* Вирівнювання за верхнім краєм тексту */
+    padding: 0 44px;
+    /* АДАПТИВНИЙ ВІДСТУП КНОПОК ДЛЯ ПЛАНШЕТІВ (від краю контейнера) */
+  }
+
+  .swiper-buttons button {
+    display: flex;
+    /* Показуємо кнопки для планшетів */
+    width: 44px;
+    height: 44px;
+    font-size: 22px;
+  }
+
+  .swiper-buttons button img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .pagination {
+    gap: 10px;
+  }
+
+  .pagination span {
+    width: 12px;
+    height: 12px;
+  }
+
+  .loader {
+    width: 44px;
+    height: 44px;
+    border: 4px solid #FFF;
+  }
+}
+
+/*
+* ----------------------------------------------------
+* СТИЛІ ДЛЯ ДЕСКТОПІВ (min-width: 1440px)
+* ----------------------------------------------------
+*/
+@media screen and (min-width: 1440px) {
+  .feedback-container {
+    width: 1440px;
+    /* Фіксована ширина для десктопу */
+    padding-top: 112px;
+    padding-right: 64px;
+    padding-bottom: 112px;
+    padding-left: 64px;
+  }
+
+  .feedback-section {
+    min-height: 397.89px;
+    gap: 16px;
+  }
+
+  .swiper-container {
+    min-height: 250px;
+  }
+
+  .swiper-slide {
+    min-height: 200px;
+  }
+
+  .swiper-slide .text {
+    font-size: 24px;
+    line-height: 1.5;
+    margin-top: 20px;
+    margin-bottom: 32px;
+    max-width: 770px;
+    /* АДАПТИВНА ШИРИНА ТЕКСТУ ДЛЯ ДЕСКТОПІВ (для відступу 175px) */
+  }
+
+  .swiper-slide .user {
+    font-size: 18px;
+  }
+
+  .rating {
+    margin-bottom: 20px;
+    gap: 5px;
+  }
+
+  .rating .star,
+  .rating .star-empty {
+    font-size: 20px;
+  }
+
+  .swiper-buttons {
+    top: 60px;
+    /* Вирівнювання за верхнім краєм тексту */
+    padding: 0 48px;
+    /* АДАПТИВНИЙ ВІДСТУП КНОПОК ДЛЯ ДЕСКТОПІВ (від краю контейнера) */
+  }
+
+  .swiper-buttons button {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+  }
+
+  .swiper-buttons button img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .pagination {
+    gap: 10px;
+  }
+
+  .pagination span {
+    width: 12px;
+    height: 12px;
+  }
+
+  .loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #FFF;
   }
 }
