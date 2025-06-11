@@ -68,7 +68,6 @@ body {
   font-style: normal;
   color: #fff;
   max-width: 90%;
-  /* Зберігаємо 90% для мобільних (кнопки приховані) */
 }
 
 /* ІМ'Я */
@@ -103,12 +102,10 @@ body {
 .swiper-buttons {
   position: absolute;
   top: 48px;
-  /* Вирівнювання за верхнім краєм тексту для мобільних */
   width: 100%;
   left: 0;
   right: 0;
   padding: 0 16px;
-  /* Менші відступи для кнопок на мобільних (хоча приховані) */
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
@@ -116,29 +113,42 @@ body {
   z-index: 20;
 }
 
+/* СТИЛІ ДЛЯ SVG ІКОНОК всередині кнопок */
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+  fill: currentColor;
+  /* Це дозволяє SVG іконці успадковувати властивість 'color' від батьківського елемента */
+  /* Якщо ви хочете зафіксувати колір на білий, можна використати: fill: #ffffff; */
+}
+
 /* ПРИХОВУЄМО КНОПКИ ЗА ЗАМОВЧУВАННЯМ (ДЛЯ МОБІЛЬНИХ) */
 .swiper-buttons button {
   display: none;
-  /* Приховуємо кнопки на мобільних екранах */
   background-color: #060307;
   color: #fff;
+  /* *** ЦЕ КЛЮЧ: Встановлює колір тексту кнопки на білий, який успадковує SVG *** */
   border-radius: 8px;
   width: 40px;
   height: 40px;
   justify-content: center;
   align-items: center;
   font-size: 20px;
+  /* Це для тексту, але SVG його не використовує */
   cursor: pointer;
   transition: background 0.3s, border-color 0.3s;
   pointer-events: auto;
   border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 0;
+  /* Важливо для центрування SVG всередині кнопки */
 }
 
-.swiper-buttons button img {
+/* Цей блок тепер не потрібен, оскільки ми використовуємо SVG, а не IMG */
+/* .swiper-buttons button img {
   width: 16px;
   height: 16px;
   display: block;
-}
+} */
 
 .swiper-buttons button:hover {
   background: rgba(6, 3, 7, 0.8);
@@ -237,7 +247,6 @@ body {
     margin-top: 20px;
     margin-bottom: 24px;
     max-width: 440px;
-    /* АДАПТИВНА ШИРИНА ТЕКСТУ ДЛЯ ПЛАНШЕТІВ (для відступу 44px) */
   }
 
   .swiper-slide .user {
@@ -256,23 +265,21 @@ body {
 
   .swiper-buttons {
     top: 59px;
-    /* Вирівнювання за верхнім краєм тексту */
     padding: 0 44px;
-    /* АДАПТИВНИЙ ВІДСТУП КНОПОК ДЛЯ ПЛАНШЕТІВ (від краю контейнера) */
   }
 
   .swiper-buttons button {
     display: flex;
-    /* Показуємо кнопки для планшетів */
     width: 44px;
     height: 44px;
     font-size: 22px;
   }
 
-  .swiper-buttons button img {
-    width: 20px;
-    height: 20px;
-  }
+  /* Цей блок тепер не потрібен */
+  /* .swiper-buttons button img {
+      width: 20px;
+      height: 20px;
+  } */
 
   .pagination {
     gap: 10px;
@@ -298,7 +305,6 @@ body {
 @media screen and (min-width: 1440px) {
   .feedback-container {
     width: 1440px;
-    /* Фіксована ширина для десктопу */
     padding-top: 112px;
     padding-right: 64px;
     padding-bottom: 112px;
@@ -324,7 +330,6 @@ body {
     margin-top: 20px;
     margin-bottom: 32px;
     max-width: 770px;
-    /* АДАПТИВНА ШИРИНА ТЕКСТУ ДЛЯ ДЕСКТОПІВ (для відступу 175px) */
   }
 
   .swiper-slide .user {
@@ -343,9 +348,7 @@ body {
 
   .swiper-buttons {
     top: 60px;
-    /* Вирівнювання за верхнім краєм тексту */
     padding: 0 48px;
-    /* АДАПТИВНИЙ ВІДСТУП КНОПОК ДЛЯ ДЕСКТОПІВ (від краю контейнера) */
   }
 
   .swiper-buttons button {
@@ -354,10 +357,11 @@ body {
     font-size: 24px;
   }
 
-  .swiper-buttons button img {
-    width: 24px;
-    height: 24px;
-  }
+  /* Цей блок тепер не потрібен */
+  /* .swiper-buttons button img {
+      width: 24px;
+      height: 24px;
+  } */
 
   .pagination {
     gap: 10px;
